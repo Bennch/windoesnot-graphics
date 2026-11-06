@@ -195,10 +195,7 @@ impl AsyncComponent for AppModel {
                             #[wrap(Some)]
                             #[name = "sidebar_view"]
                             set_child = &adw::ToolbarView {
-                                add_top_bar = &adw::HeaderBar {
-                                    set_show_end_title_buttons: false,
-                                },
-
+                                // No bar of its own here: the WinDoesNot logo is the top of the sidebar.
                                 #[wrap(Some)]
                                 set_content = &gtk::Box {
                                     set_orientation: gtk::Orientation::Vertical,
@@ -206,7 +203,10 @@ impl AsyncComponent for AppModel {
                                     add_css_class: "main-sidebar-container",
                                     add_binding: (&model.ui_sensitive, "sensitive"),
 
-                                    crate::desktop::brand(crate::desktop::product_name()) {},
+                                    // The logo doubles as the drag area of the window.
+                                    gtk::WindowHandle {
+                                        set_child: Some(&crate::desktop::brand(crate::desktop::product_name())),
+                                    },
 
                                     model.gpu_selector.widget().clone() {},
 
