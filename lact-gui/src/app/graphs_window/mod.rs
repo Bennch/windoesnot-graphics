@@ -285,8 +285,8 @@ impl relm4::Component for GraphsWindow {
             }
             GraphsWindowMsg::ExportData => {
                 let settings = SaveDialogSettings {
-                    cancel_label: "Cancel".to_owned(),
-                    accept_label: "Save".to_owned(),
+                    cancel_label: fl!(I18N, "cancel"),
+                    accept_label: fl!(I18N, "save"),
                     create_folders: true,
                     is_modal: true,
                     filters: vec![],

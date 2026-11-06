@@ -1,6 +1,7 @@
 use std::collections::HashMap;
 
-use crate::app::{APP_BROKER, msg::AppMsg, utils::formatting};
+use crate::{I18N, app::{APP_BROKER, msg::AppMsg, utils::formatting}};
+use i18n_embed_fl::fl;
 use adw::prelude::AdwWindowExt;
 use gtk::{
     glib::{
@@ -40,7 +41,7 @@ impl relm4::Component for ProcessMonitorWindow {
 
     view! {
         adw::Window {
-            set_title: Some("Process Monitor"),
+            set_title: Some(&fl!(I18N, "process-monitor-title")),
             set_default_height: 600,
             set_default_width: 900,
             set_hide_on_close: true,

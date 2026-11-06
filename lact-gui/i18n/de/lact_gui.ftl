@@ -309,3 +309,21 @@ default-button = Standard
 service-setup-title = Diensteinrichtung
 service-autostart = Beim Hochfahren automatisch starten
 service-autostart-disable = Autostart auch deaktivieren
+
+# WinDoesNot additions
+profiles-label = Profil
+process-monitor-title = Prozessmonitor
+ok = OK
+
+# translations missing upstream
+extra-clocks = Zusätzliche Takte
+performance-level-profile-standard = Profiling Standard
+performance-level-profile-min-sclk = Profiling niedrigster GPU-Takt
+performance-level-profile-min-mclk = Profiling niedrigster VRAM-Takt
+performance-level-profile-peak = Profiling Spitze
+performance-level-profile-standard-description = Fester Profiling-Modus
+performance-level-profile-min-sclk-description = Profiling-Modus, der den GPU-Takt auf die niedrigste Stufe zwingt
+performance-level-profile-min-mclk-description = Profiling-Modus, der den VRAM-Takt auf die niedrigste Stufe zwingt
+performance-level-profile-peak-description = Profiling-Modus, der GPU- und VRAM-Takt auf die höchste Stufe zwingt
+enable-vf-curve = VF-Kurvenbearbeitung aktivieren
+vf-curve-editing-disabled = Die VF-Kurvenbearbeitung ist auf der OC-Seite deaktiviert

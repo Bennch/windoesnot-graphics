@@ -196,7 +196,7 @@ impl relm4::factory::FactoryComponent for ProfileRuleRow {
                                 },
 
                                 gtk::Button {
-                                    set_label: "OK",
+                                    set_label: &fl!(I18N, "ok"),
                                     set_align: gtk::Align::End,
                                     set_expand: true,
                                     connect_clicked[main_popover] => move |_| {

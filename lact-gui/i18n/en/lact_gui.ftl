@@ -344,3 +344,8 @@ color-scheme-dark = Dark
 # Crash page
 crash-page-title = Application Crashed
 exit = Exit
+
+# WinDoesNot additions
+profiles-label = Profile
+process-monitor-title = Process Monitor
+ok = OK

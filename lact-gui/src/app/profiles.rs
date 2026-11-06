@@ -59,7 +59,7 @@ impl Component for ProfileSelector {
             add_css_class: "sidebar-section",
 
             gtk::Label {
-                set_label: "Profile",
+                set_label: &fl!(I18N, "profiles-label"),
                 set_halign: gtk::Align::Start,
                 set_margin_horizontal: 4,
                 add_css_class: css::DIM_LABEL,

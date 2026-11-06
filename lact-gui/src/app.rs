@@ -161,7 +161,7 @@ impl AsyncComponent for AppModel {
                 &fl!(I18N, "dump-vbios") => DumpVBiosAction,
             },
             section! {
-                "Service Setup" => ServiceSetupAction,
+                &fl!(I18N, "service-setup-title") => ServiceSetupAction,
                 &fl!(I18N, "preferences") => PreferencesAction,
                 &fl!(I18N, "about") => AboutAction,
             },
