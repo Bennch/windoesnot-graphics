@@ -1,0 +1,235 @@
+---
+source: lact-daemon/src/tests/mod.rs
+expression: device_info
+---
+{
+  "clocks_info": {
+    "table": {
+      "type": "intel",
+      "value": {
+        "gt_freq": [
+          400,
+          2850
+        ],
+        "rp0_freq": 2850,
+        "rpe_freq": 400,
+        "rpn_freq": 400
+      }
+    }
+  },
+  "info": {
+    "driver": "xe",
+    "drm_info": {
+      "memory_info": {
+        "cpu_accessible_total": 12809404416,
+        "cpu_accessible_used": 0,
+        "resizeable_bar": true
+      },
+      "vram_clock_ratio": 1.0
+    },
+    "flags": [
+      "ConfigurableFanControl"
+    ],
+    "link_info": {},
+    "pci_info": {
+      "device_pci_info": {
+        "model": "Battlemage G21 [Arc B580]",
+        "model_id": "E20B",
+        "vendor": "Intel Corporation",
+        "vendor_id": "8086"
+      },
+      "subsystem_pci_info": {
+        "model": "Intel Arc B580 Limited Edition",
+        "model_id": "1100",
+        "vendor": "Intel Corporation",
+        "vendor_id": "8086"
+      }
+    },
+    "vulkan_instances": []
+  },
+  "pci_info": {
+    "device_pci_info": {
+      "model": "Battlemage G21 [Arc B580]",
+      "model_id": "E20B",
+      "vendor": "Intel Corporation",
+      "vendor_id": "8086"
+    },
+    "subsystem_pci_info": {
+      "model": "Intel Arc B580 Limited Edition",
+      "model_id": "1100",
+      "vendor": "Intel Corporation",
+      "vendor_id": "8086"
+    }
+  },
+  "power_profile_modes": null,
+  "power_states": {
+    "core": [
+      {
+        "enabled": true,
+        "value": 400
+      },
+      {
+        "enabled": true,
+        "value": 400
+      },
+      {
+        "enabled": true,
+        "value": 2850
+      }
+    ],
+    "vram": []
+  },
+  "stats": {
+    "clockspeed": {
+      "gpu_clockspeed": 400,
+      "sensors": {},
+      "target_gpu_clockspeed": 400
+    },
+    "fan": {
+      "control_enabled": false,
+      "curve": {
+        "30": 0.0,
+        "45": 0.0,
+        "46": 0.10196078568696976,
+        "50": 0.16078431904315948,
+        "60": 0.25882354378700256,
+        "68": 0.29019609093666077,
+        "72": 0.3490196168422699,
+        "75": 0.4117647111415863,
+        "80": 0.529411792755127
+      },
+      "pmfw_info": {},
+      "speed_current": 1116,
+      "speed_max": 2160,
+      "static_speed": 0.0
+    },
+    "power": {
+      "cap_current": 190.0,
+      "cap_default": 190.0,
+      "cap_max": 380.0,
+      "cap_min": 0.0
+    },
+    "temps": {
+      "mctrl": {
+        "crit": null,
+        "crit_hyst": null,
+        "current": 55.0,
+        "display_only": true,
+        "primary": false
+      },
+      "pcie": {
+        "crit": null,
+        "crit_hyst": null,
+        "current": 58.0,
+        "display_only": true,
+        "primary": false
+      },
+      "pkg": {
+        "crit": null,
+        "crit_hyst": null,
+        "current": 54.0,
+        "display_only": true,
+        "primary": true
+      },
+      "vram": {
+        "crit": null,
+        "crit_hyst": null,
+        "current": 56.0,
+        "display_only": true,
+        "primary": true
+      },
+      "vram_ch_0": {
+        "crit": null,
+        "crit_hyst": null,
+        "current": 52.0,
+        "display_only": true,
+        "primary": false
+      },
+      "vram_ch_1": {
+        "crit": null,
+        "crit_hyst": null,
+        "current": 54.0,
+        "display_only": true,
+        "primary": false
+      },
+      "vram_ch_10": {
+        "crit": null,
+        "crit_hyst": null,
+        "current": 54.0,
+        "display_only": true,
+        "primary": false
+      },
+      "vram_ch_11": {
+        "crit": null,
+        "crit_hyst": null,
+        "current": 54.0,
+        "display_only": true,
+        "primary": false
+      },
+      "vram_ch_2": {
+        "crit": null,
+        "crit_hyst": null,
+        "current": 54.0,
+        "display_only": true,
+        "primary": false
+      },
+      "vram_ch_3": {
+        "crit": null,
+        "crit_hyst": null,
+        "current": 54.0,
+        "display_only": true,
+        "primary": false
+      },
+      "vram_ch_4": {
+        "crit": null,
+        "crit_hyst": null,
+        "current": 52.0,
+        "display_only": true,
+        "primary": false
+      },
+      "vram_ch_5": {
+        "crit": null,
+        "crit_hyst": null,
+        "current": 52.0,
+        "display_only": true,
+        "primary": false
+      },
+      "vram_ch_6": {
+        "crit": null,
+        "crit_hyst": null,
+        "current": 54.0,
+        "display_only": true,
+        "primary": false
+      },
+      "vram_ch_7": {
+        "crit": null,
+        "crit_hyst": null,
+        "current": 54.0,
+        "display_only": true,
+        "primary": false
+      },
+      "vram_ch_8": {
+        "crit": null,
+        "crit_hyst": null,
+        "current": 54.0,
+        "display_only": true,
+        "primary": false
+      },
+      "vram_ch_9": {
+        "crit": null,
+        "crit_hyst": null,
+        "current": 56.0,
+        "display_only": true,
+        "primary": false
+      }
+    },
+    "throttle_info": {},
+    "voltage": {
+      "sensors": {}
+    },
+    "vram": {
+      "total": 12809404416,
+      "used": 10781573120
+    }
+  }
+}

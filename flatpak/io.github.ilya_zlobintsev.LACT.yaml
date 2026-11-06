@@ -1,0 +1,187 @@
+app-id: io.github.ilya_zlobintsev.LACT
+runtime: org.gnome.Platform
+runtime-version: '50'
+sdk: org.gnome.Sdk
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.rust-stable
+  - org.freedesktop.Sdk.Extension.llvm20
+command: startup.sh
+finish-args:
+  - --share=ipc
+  - --socket=fallback-x11
+  - --socket=wayland
+  - --device=dri
+  - --talk-name=org.freedesktop.Flatpak
+  - --system-talk-name=org.freedesktop.systemd1
+  - --filesystem=/run/lactd.sock
+cleanup:
+  - /include
+  - /share/vulkan/registry
+  - '*.a'
+  - /lib/pkgconfig
+modules:
+  - name: vulkan-tools
+    buildsystem: cmake-ninja
+    config-opts:
+      - -DVULKAN_HEADERS_INSTALL_DIR=/app
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DBUILD_CUBE=OFF
+      - -DBUILD_ICD=OFF
+      - -DBUILD_VULKANINFO=ON
+    sources:
+      - type: archive
+        url: https://github.com/KhronosGroup/Vulkan-Tools/archive/v1.4.334/Vulkan-Tools-1.4.334.tar.gz
+        sha256: ae6c8ec78c6ebe2ec7c3034ac99454eaa2e855fe2b3df0ea858c2ba669b7fd83
+        x-checker-data:
+          type: anitya
+          project-id: 242111
+          url-template: https://github.com/KhronosGroup/Vulkan-Tools/archive/v$version/Vulkan-Tools-$version.tar.gz
+    modules:
+      - name: volk
+        buildsystem: cmake-ninja
+        config-opts:
+          - -DVOLK_INSTALL=ON
+        sources:
+          - type: archive
+            url: https://github.com/zeux/volk/archive/vulkan-sdk-1.4.328.1.tar.gz
+            sha256: 8d6a4092d5de62d0c6290394cf81cf7a99e36875934b1b75d595e76d08fcadd1
+            x-checker-data:
+              type: anitya
+              project-id: 370476
+              url-template: https://github.com/zeux/volk/archive/vulkan-sdk-$version.tar.gz
+        modules:
+          - name: vulkan-headers
+            buildsystem: cmake-ninja
+            sources:
+              - type: archive
+                url: https://github.com/KhronosGroup/Vulkan-Headers/archive/v1.4.334/Vulkan-Headers-v1.4.334.tar.gz
+                sha256: f6b858ed8ff5747a32e7840ba20c565c6477c5c1c171bfc25195ef1730b349cc
+                x-checker-data:
+                  type: anitya
+                  project-id: 88835
+                  url-template: https://github.com/KhronosGroup/Vulkan-Headers/archive/v$version/Vulkan-Headers-v$version.tar.gz
+
+
+  - name: clinfo
+    no-autogen: true
+    no-make-install: true
+    build-commands:
+      - make -j$FLATPAK_BUILDER_N_JOBS PREFIX=$FLATPAK_DEST install
+      - chmod 755 $FLATPAK_DEST/bin/clinfo
+    sources:
+      - type: archive
+        url: https://github.com/Oblomov/clinfo/archive/3.0.25.02.14/clinfo-3.0.25.02.14.tar.gz
+        sha256: 48b77dc33315e6f760791a2984f98ea4bff28504ff37d460d8291585f49fcd3a
+        x-checker-data:
+          type: anitya
+          project-id: 10503
+          url-template: https://github.com/Oblomov/clinfo/archive/$version/clinfo-$version.tar.gz
+    modules:
+      - name: opencl-headers
+        buildsystem: cmake-ninja
+        config-opts:
+          - -DCMAKE_INSTALL_DATADIR=/app/lib
+        sources:
+          - type: archive
+            url: https://github.com/KhronosGroup/OpenCL-Headers/archive/v2025.07.22/OpenCL-Headers-v2025.07.22.tar.gz
+            sha256: 98f0a3ea26b4aec051e533cb1750db2998ab8e82eda97269ed6efe66ec94a240
+            x-checker-data:
+              type: anitya
+              project-id: 223257
+              url-template: https://github.com/KhronosGroup/OpenCL-Headers/archive/v$version/OpenCL-Headers-v$version.tar.gz
+
+  - name: flatbox
+    buildsystem: simple
+    build-commands:
+      - install -Dm755 flatbox -t /app/bin/
+    sources:
+      - type: archive
+        only-arches:
+          - x86_64
+        url: https://github.com/ilya-zlobintsev/flatbox/releases/download/v0.0.12/flatbox-Linux-musl-x86_64.tar.gz
+        strip-components: 0
+        sha256: de32e42d27fce5113d3e3148d2bfee8020cc180df4c365c92efde27d02fc398e
+      - type: archive
+        only-arches:
+          - aarch64
+        url: https://github.com/ilya-zlobintsev/flatbox/releases/download/v0.0.12/flatbox-Linux-musl-arm64.tar.gz
+        strip-components: 0
+        sha256: a32ededf08fca1b0c075401ec400881539156c12b97f10f62a17803f1b9d304b
+
+  - name: hwdata
+    config-opts:
+      - --datarootdir=/app/share
+    sources:
+      - type: git
+        url: https://github.com/vcrhonek/hwdata.git
+        tag: v0.408
+        commit: 4456b256a1a5b1d1c1c1a60a9f69c59f7743c522
+        x-checker-data:
+          type: git
+
+  - name: libdisplay-info
+    buildsystem: meson
+    sources:
+      - type: archive
+        url: https://gitlab.freedesktop.org/emersion/libdisplay-info/-/archive/0.3.0/libdisplay-info-0.3.0.tar.gz
+        sha256: 2b467e3336aec63819d6aca28d7310d3dc7415b2b3a3c3a5aec9d3727053c078
+        x-checker-data:
+          type: anitya
+          project-id: 326668
+          stable-only: true
+          url-template: https://gitlab.freedesktop.org/emersion/libdisplay-info/-/archive/$version/libdisplay-info-$version.tar.gz
+
+  - name: lact
+    buildsystem: simple
+    sources:
+      - generated-sources.json
+      - type: dir
+        path: "../"
+        skip:
+          - "target"
+          - "target_ra"
+    build-options:
+      append-path: /usr/lib/sdk/rust-stable/bin:/usr/lib/sdk/llvm20/bin
+      prepend-ld-library-path: /usr/lib/sdk/llvm20/lib
+      env:
+        CARGO_HOME: /run/build/lact/cargo
+        PREFIX: /app
+    build-commands:
+      - cargo --offline fetch --manifest-path Cargo.toml
+      - cargo --offline build -p lact --release
+      - make install
+      - install -Dm755 flatpak/startup.sh /app/bin/startup.sh
+      - install -Dm755 flatpak/daemon.sh /app/bin/daemon.sh
+      - desktop-file-edit --set-key Exec --set-value startup.sh /app/share/applications/io.github.ilya_zlobintsev.LACT.desktop
+    modules:
+      - name: yad
+        config-opts:
+          - --enable-standalone
+          - --disable-icon-browser
+          - --disable-tools
+        sources:
+          - type: archive
+            url: https://github.com/v1cont/yad/releases/download/v14.1/yad-14.1.tar.xz
+            sha256: dde047a915cd8d3892c32b6ba031876f5cda673e01882c99613f043867c88133
+            x-checker-data:
+              type: anitya
+              project-id: 5280
+              url-template: https://github.com/v1cont/yad/releases/download/v$version/yad-$version.tar.xz
+        cleanup:
+          - /share/icons
+        modules:
+          - name: intltool
+            cleanup:
+              - '*'
+            sources:
+              - type: archive
+                url: https://launchpad.net/intltool/trunk/0.51.0/+download/intltool-0.51.0.tar.gz
+                mirror-urls:
+                  - https://sources.suse.com/SUSE:SLE-15-SP7:Update:BCI/000product/ca527df4d03bf96a67854a8ed2f0c64b/INCLUDED/SUSE:SLE-15-SP6:GA::intltool::45f77273c3f2ef792fa697b444183beb/intltool-0.51.0.tar.gz
+                  - https://mirror-hk.koddos.net/lfs/lfs-packages/12.0/intltool-0.51.0.tar.gz
+                  - https://gstreamer.freedesktop.org/src/mirror/intltool-0.51.0.tar.gz
+                sha256: 67c74d94196b153b774ab9f89b2fa6c6ba79352407037c8c14d5aeb334e959cd
+                x-checker-data:
+                  type: anitya
+                  project-id: 1385
+                  url-template: https://launchpad.net/intltool/trunk/$version/+download/intltool-$version.tar.gz

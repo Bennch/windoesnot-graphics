@@ -1,0 +1,135 @@
+---
+source: lact-daemon/src/tests/mod.rs
+expression: device_info
+---
+{
+  "clocks_info": {
+    "table": {
+      "type": "intel",
+      "value": {
+        "gt_freq": [
+          300,
+          2450
+        ],
+        "rp0_freq": 2450,
+        "rpe_freq": 600,
+        "rpn_freq": 300
+      }
+    }
+  },
+  "info": {
+    "driver": "i915",
+    "drm_info": {
+      "execution_units": 128,
+      "memory_info": {
+        "cpu_accessible_total": 6383730688,
+        "cpu_accessible_used": 22360064,
+        "resizeable_bar": true
+      },
+      "subslices": 8,
+      "vram_clock_ratio": 1.0
+    },
+    "flags": [],
+    "link_info": {},
+    "opencl_instances": [
+      {
+        "c_version": "OpenCL C 1.2 ",
+        "compute_units": 128,
+        "device_name": "Intel(R) Arc(TM) A380 Graphics",
+        "driver_version": "25.48.36300",
+        "global_memory": 6064541696,
+        "local_memory": 65536,
+        "platform_name": "Intel(R) OpenCL Graphics",
+        "version": "OpenCL 3.0 NEO ",
+        "workgroup_size": 1024
+      }
+    ],
+    "pci_info": {
+      "device_pci_info": {
+        "model": "DG2 [Arc A380]",
+        "model_id": "56A5",
+        "vendor": "Intel Corporation",
+        "vendor_id": "8086"
+      },
+      "subsystem_pci_info": {
+        "model": "ASRock Challenger ITX Arc A380",
+        "model_id": "6004",
+        "vendor": "ASRock Incorporation",
+        "vendor_id": "1849"
+      }
+    },
+    "vulkan_instances": []
+  },
+  "pci_info": {
+    "device_pci_info": {
+      "model": "DG2 [Arc A380]",
+      "model_id": "56A5",
+      "vendor": "Intel Corporation",
+      "vendor_id": "8086"
+    },
+    "subsystem_pci_info": {
+      "model": "ASRock Challenger ITX Arc A380",
+      "model_id": "6004",
+      "vendor": "ASRock Incorporation",
+      "vendor_id": "1849"
+    }
+  },
+  "power_profile_modes": null,
+  "power_states": {
+    "core": [
+      {
+        "enabled": true,
+        "value": 300
+      },
+      {
+        "enabled": true,
+        "value": 600
+      },
+      {
+        "enabled": true,
+        "value": 2450
+      },
+      {
+        "enabled": true,
+        "value": 2450
+      }
+    ],
+    "vram": []
+  },
+  "stats": {
+    "clockspeed": {
+      "gpu_clockspeed": 600,
+      "sensors": {},
+      "target_gpu_clockspeed": 600
+    },
+    "fan": {
+      "control_enabled": false,
+      "pmfw_info": {},
+      "speed_current": 0
+    },
+    "power": {
+      "cap_current": 55.0,
+      "cap_default": 55.0,
+      "cap_max": 400.0,
+      "cap_min": 0.0
+    },
+    "temps": {
+      "gpu": {
+        "crit": null,
+        "crit_hyst": null,
+        "current": 55.0,
+        "display_only": true,
+        "primary": true
+      }
+    },
+    "throttle_info": {},
+    "voltage": {
+      "gpu": 603,
+      "sensors": {}
+    },
+    "vram": {
+      "total": 6383730688,
+      "used": 22360064
+    }
+  }
+}
