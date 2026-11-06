@@ -174,7 +174,7 @@ impl AsyncComponent for AppModel {
             .default_height(CONFIG.read().window_size.map_or(DEFAULT_WINDOW_HEIGHT, |size| size.height))
             .default_width(CONFIG.read().window_size.map_or(DEFAULT_WINDOW_WIDTH, |size| size.width))
             .icon_name(APP_ID)
-            .title("LACT")
+            .title("WinDoesNot Grafik")
             .build() {
                 #[name = "toast_overlay"]
                 adw::ToastOverlay {
@@ -190,7 +190,7 @@ impl AsyncComponent for AppModel {
 
                         #[wrap(Some)]
                         set_sidebar = &adw::NavigationPage {
-                            set_title: "LACT",
+                            set_title: crate::desktop::product_name(),
 
                             #[wrap(Some)]
                             #[name = "sidebar_view"]
@@ -205,6 +205,8 @@ impl AsyncComponent for AppModel {
                                     set_vexpand: true,
                                     add_css_class: "main-sidebar-container",
                                     add_binding: (&model.ui_sensitive, "sensitive"),
+
+                                    crate::desktop::brand(crate::desktop::product_name()) {},
 
                                     model.gpu_selector.widget().clone() {},
 
@@ -377,6 +379,8 @@ impl AsyncComponent for AppModel {
             error!("could not apply theme: {err:#}");
         }
         CONFIG.read().color_scheme.apply();
+        // WinDoesNot look: colours, light/dark and accent follow the desktop Settings.
+        crate::desktop::setup();
 
         let (daemon_client, daemon_config_shown) = match args.tcp_address {
             Some(remote_addr) => {

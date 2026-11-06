@@ -1,5 +1,6 @@
 mod app;
 mod config;
+mod desktop;
 mod service_setup;
 
 use std::{
@@ -24,7 +25,7 @@ static CONFIG: SharedState<UiConfig> = SharedState::new();
 static PANICKED: AtomicBool = AtomicBool::new(false);
 
 const GUI_VERSION: &str = env!("CARGO_PKG_VERSION");
-pub const APP_ID: &str = "io.github.ilya_zlobintsev.LACT";
+pub const APP_ID: &str = "me.windoesnot.Graphics";
 pub const REPO_URL: &str = "https://github.com/ilya-zlobintsev/LACT";
 
 pub(crate) static I18N: LazyLock<FluentLanguageLoader> = LazyLock::new(|| {
@@ -86,6 +87,9 @@ pub fn run(args: GuiArgs) -> anyhow::Result<()> {
             });
         }
     }));
+
+    // The interface language follows the desktop Settings, then the loaders start.
+    desktop::apply_language_env();
 
     // Pre-init localization
     LazyLock::force(&I18N);

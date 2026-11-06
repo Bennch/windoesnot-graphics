@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=WinDoesNot Graphics
+Name[de]=WinDoesNot Grafik
+Comment=Control and monitor your graphics card
+Comment[de]=Grafikkarte steuern und überwachen
+Exec=lact gui
+Icon=me.windoesnot.Graphics
+Terminal=false
+Categories=System;Settings;HardwareSettings;
+Keywords=GPU;Graphics;Grafik;NVIDIA;AMD;Intel;Fan;Lüfter;Overclock;
+StartupNotify=true
